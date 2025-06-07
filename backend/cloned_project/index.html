@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Uber Eats | Food &amp; Grocery Delivery | Order Groceries and Food Online</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'uber-green': '#06c167',
+                        'uber-black': '#000000',
+                        'uber-gray': '#545454',
+                        'uber-light-gray': '#f6f6f6'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased">
+<!-- Header -->
+<header class="bg-white shadow-sm relative z-50">
+<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Logo -->
+<div class="flex-shrink-0">
+<div class="text-2xl font-bold text-uber-black">
+                        Uber<span class="text-uber-green">Eats</span>
+</div>
+</div>
+<!-- Desktop Navigation -->
+<div class="hidden md:flex items-center space-x-8">
+<div class="flex items-center space-x-2 bg-uber-light-gray rounded-full px-4 py-2">
+<svg class="w-5 h-5 text-uber-gray" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" fill-rule="evenodd"></path>
+</svg>
+<span class="text-sm text-uber-black">Enter delivery address</span>
+<svg class="w-4 h-4 text-uber-gray" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd"></path>
+</svg>
+</div>
+</div>
+<!-- Auth Buttons -->
+<div class="hidden md:flex items-center space-x-4">
+<button class="text-sm font-medium text-uber-black hover:text-uber-gray transition-colors">
+                        Log in
+                    </button>
+<button class="bg-uber-black text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">
+                        Sign up
+                    </button>
+</div>
+<!-- Mobile menu button -->
+<div class="md:hidden">
+<button class="text-uber-black hover:text-uber-gray">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</nav>
+</header>
+<!-- Main Content -->
+<main>
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-r from-green-400 to-blue-500 min-h-[500px] flex items-center">
+<div class="absolute inset-0 bg-black bg-opacity-40"></div>
+<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+<h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    Order food to your door
+                </h1>
+<p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+                    Get delivery from restaurants and shops near you
+                </p>
+<!-- Location Input -->
+<div class="max-w-md mx-auto">
+<div class="flex rounded-lg bg-white overflow-hidden shadow-lg">
+<div class="flex-1 relative">
+<input aria-label="Enter delivery address" class="w-full px-4 py-4 text-uber-black text-lg focus:outline-none" placeholder="Enter delivery address" type="text"/>
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2">
+<svg class="w-6 h-6 text-uber-gray" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" fill-rule="evenodd"></path>
+</svg>
+</div>
+</div>
+<button class="bg-uber-black text-white px-6 py-4 font-medium hover:bg-gray-800 transition-colors">
+                            Find food
+                        </button>
+</div>
+</div>
+</div>
+<!-- Location Request Modal (hidden by default) -->
+<div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 hidden" id="locationModal">
+<div class="flex items-center justify-center min-h-screen p-4">
+<div class="bg-white rounded-lg p-8 max-w-md w-full text-center transform transition-all">
+<div class="w-16 h-16 bg-uber-green rounded-full flex items-center justify-center mx-auto mb-4">
+<svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h3 class="text-xl font-semibold mb-4 text-uber-black">Allow location access</h3>
+<p class="text-uber-gray mb-6">We need your location to show you restaurants and delivery options in your area.</p>
+<div class="space-y-3">
+<button class="w-full bg-uber-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                                Allow location access
+                            </button>
+<button class="w-full border border-gray-300 text-uber-black py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                                Enter address manually
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-16 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-3 gap-8">
+<div class="text-center">
+<div class="w-16 h-16 bg-uber-green rounded-full flex items-center justify-center mx-auto mb-4">
+<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-semibold mb-2 text-uber-black">Fast delivery</h3>
+<p class="text-uber-gray">Get your food delivered in as little as 30 minutes from restaurants near you.</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-uber-green rounded-full flex items-center justify-center mx-auto mb-4">
+<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-semibold mb-2 text-uber-black">Wide selection</h3>
+<p class="text-uber-gray">Choose from thousands of restaurants and shops in your city.</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-uber-green rounded-full flex items-center justify-center mx-auto mb-4">
+<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-xl font-semibold mb-2 text-uber-black">Live tracking</h3>
+<p class="text-uber-gray">Track your order in real-time from preparation to your doorstep.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="py-16 bg-uber-light-gray">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-bold text-center mb-12 text-uber-black">How it works</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="text-center">
+<div class="w-12 h-12 bg-uber-green rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="text-white font-bold text-lg">1</span>
+</div>
+<h3 class="text-lg font-semibold mb-2 text-uber-black">Choose your food</h3>
+<p class="text-uber-gray">Browse menus from your favorite restaurants and add items to your cart.</p>
+</div>
+<div class="text-center">
+<div class="w-12 h-12 bg-uber-green rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="text-white font-bold text-lg">2</span>
+</div>
+<h3 class="text-lg font-semibold mb-2 text-uber-black">Place your order</h3>
+<p class="text-uber-gray">Review your order, enter your delivery details, and complete payment.</p>
+</div>
+<div class="text-center">
+<div class="w-12 h-12 bg-uber-green rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="text-white font-bold text-lg">3</span>
+</div>
+<h3 class="text-lg font-semibold mb-2 text-uber-black">Track &amp; enjoy</h3>
+<p class="text-uber-gray">Track your delivery in real-time and enjoy your meal when it arrives.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-uber-black text-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- Footer Links -->
+<section class="grid md:grid-cols-4 gap-8 mb-8">
+<div>
+<h4 class="font-semibold mb-4">Get help</h4>
+<ul class="space-y-2 text-sm text-gray-300">
+<li><a class="hover:text-white transition-colors" href="#">Add your restaurant</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Sign up to deliver</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Create a business account</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold mb-4">Restaurants near me</h4>
+<ul class="space-y-2 text-sm text-gray-300">
+<li><a class="hover:text-white transition-colors" href="#">View all cities</a></li>
+<li><a class="hover:text-white transition-colors" href="#">View all countries</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Pickup near me</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold mb-4">About Uber Eats</h4>
+<ul class="space-y-2 text-sm text-gray-300">
+<li><a class="hover:text-white transition-colors" href="#">About us</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Newsroom</a></li>
+<li><a class="hover:text-white transition-" href="#"></a></li></ul></div></section></div></footer></body></html>
