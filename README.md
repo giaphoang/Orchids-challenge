@@ -67,10 +67,8 @@ A smoke test script is provided to verify the basic functionality of the `/clone
 
 **Prerequisites:**
 
-1.  Ensure the application services are running. You can start them using:
-    ```bash
-    docker compose up --build
-    ```
+1.  Ensure the backend service are running. 
+
 2.  The smoke test script requires the `requests` Python library. If you don't have it installed in the Python environment you'll use to run the script, install it with:
     ```bash
     pip install requests
