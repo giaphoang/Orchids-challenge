@@ -38,6 +38,13 @@ First, set up and run the Python backend.
     ```
     The backend API will now be running at `http://localhost:8000`.
 
+5. **Set up MCP server:**
+    You will use https://glama.ai/mcp/servers/%40samihalawa/mcp-server-ai-vision MCP server to extract and scrape UI information from input URL
+    ```bash
+    npm install -g visual-ui-debug-agent-mcp
+    ```
+    This server already handle in backend logic and you don't need to run a separate server for this process. You can go to the link for more details about what this MCP server can do.
+
 ### 2. Run the Frontend
 
 Next, set up and run the Next.js frontend in a separate terminal.
